@@ -1,0 +1,11 @@
+table 
+
+video jquery
+https://www.youtube.com/watch?v=3jYZNTH5teI
+
+ag-grid
+plnkr
+https://plnkr.co/edit/?p=preview&preview
+
+official site
+https://www.ag-grid.com/javascript-data-grid/cell-editing/
