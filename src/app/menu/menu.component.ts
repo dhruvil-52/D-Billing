@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxPrintModule } from 'ngx-print';
 
 @Component({
   selector: 'app-menu',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  public title = "D-Billing";
+
   constructor() { }
 
+  public generatePDF() {
+
+  }
   ngOnInit(): void {
   }
 
