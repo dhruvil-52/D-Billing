@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxPrintModule } from 'ngx-print';
+import { CommunticationService } from '../services/communtication.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,15 +7,14 @@ import { NgxPrintModule } from 'ngx-print';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  constructor(private communicationService: CommunticationService) { }
 
-  public title = "D-Billing";
-
-  constructor() { }
-
+  public tabName: string;
   public generatePDF() {
 
   }
   ngOnInit(): void {
+    this.tabName = this.communicationService.currentTab
   }
 
 }

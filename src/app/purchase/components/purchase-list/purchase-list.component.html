@@ -1,0 +1,75 @@
+<div class="db_body">
+    <div class="row db_title">
+        <span>Item List</span>
+    </div>
+    <form [formGroup]="itemForm">
+        <div class="row">
+            <div class="col-1">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=100>
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="itemName">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=100>
+                        <mat-label>Item Code</mat-label>
+                        <input matInput formControlName="itemCode">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=100>
+                        <mat-label>Bill Number</mat-label>
+                        <input matInput formControlName="billNumber">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=100>
+                        <mat-label>Buy From</mat-label>
+                        <input matInput formControlName="buyFrom">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=100>
+                        <mat-label>Date From</mat-label>
+                        <input type="text" bsDatepicker matInput formControlName="startDate" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=100>
+                        <mat-label>Date To</mat-label>
+                        <input type="text" bsDatepicker matInput formControlName="endDate" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-6" style="text-align: right;">
+                <button class="btn db_btn" (click)="addItem()">Add Item</button>
+                <button class="btn db_btn dbml-2" (click)="getItem()">Search</button>
+                <button class="btn db_btn dbml-2" (click)="clear()">Clear</button>
+            </div>
+        </div>
+        <div class="no-found p-3" *ngIf="rowData && rowData.length == 0">
+            <p class="mb-0">No Item Available</p>
+        </div>
+        <div class="row">
+            <div class="col-12" *ngIf="rowData && rowData.length>0">
+                <p class="font-weight-bold mb-2 db_fs">Items ({{rowData.length}})</p>
+                <ag-grid-angular #agGrid id="myGrid" style="width: 100%;height: 430px;" class="ag-theme-balham"
+                    [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [rowData]="rowData"
+                    (gridReady)="onGridReady($event)" [animateRows]='true' [floatingFilter]="true"
+                    [enableCellTextSelection]="true">
+                </ag-grid-angular>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,189 @@
+
+
+  // textarea {
+  //   border: none;
+  // }
+.db_btn{
+  background-color: #1976d2;
+  color: white;
+  padding: 8px;
+  height: 25px;
+  padding-top: 1px;
+  font-size: 13px;
+}
+
+// .btn:focus {
+//   outline: none !important;
+// }
+// .btn:focus {
+//   outline: thin dotted;
+//   outline: 5px auto -webkit-focus-ring-color;
+//   outline-offset: -2px;
+// }
+
+.form_field{
+  font-size: 13px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
+.db_search_field{
+  margin-left: -20px;
+}
+
+.db_key{
+  font-size: 13px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.db_value{
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.db_key_value{
+  float:left;
+  display:inline;
+}
+
+.db_medium_font{
+  font-size: 16px;
+}
+
+.db_header{
+  size: 10px;
+  font-weight: bold;
+  text-transform:capitalize;
+}
+
+.db_title{
+  size: 20px;
+  color: #1976d2;
+  font-weight: 650;
+  margin-bottom: 16px;
+  text-transform:capitalize;
+}
+
+.db_dialog_title{
+  color: #1976d2;
+  text-transform:capitalize;
+  font-weight: 550;
+  margin-bottom: -20px;
+  margin-top: -20px;
+}
+
+.db_dialog_btn{
+  background-color: #1976d2;
+  color: white;
+  padding: 8px;
+  height: 25px;
+  padding-top: 1px;
+  font-size: 13px;
+  margin-bottom: -20px;
+  margin-top: -20px;
+}
+
+.db_color {
+  color: #1976d2;
+}
+
+.db_main_header{
+  font-size: 35px;
+  font-weight: bold;
+  text-transform:uppercase;
+  font-family: Candara ;
+}
+
+.modal-header{
+  height: 25px;
+}
+
+.modal-footer{
+  height: 35px;
+}
+
+.db_body{
+  padding-bottom: 13px;
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+.db_img{
+  height: 100px;
+  width: 100px;
+}
+
+.db_fs{
+  font-size: 13px;
+}
+
+.dbml-2{
+  margin-left: 8px;
+}
+
+.dbmr-5{
+  margin-right: 20px;
+}
+
+.dbmr-2{
+  margin-right: 8px;
+}
+
+.db_right{
+  float:right;
+}
+
+.db_left{
+  float:left;
+}
+
+.db_center{
+  text-align: center
+}
+.db_nav{
+  text-transform:capitalize;
+  font-weight: 550;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  // background-color: grey;
+  color: white;
+}
+
+hr {
+  border-top: solid 0.5px #000 !important;
+  align-content : center;
+  margin-left : auto;
+  margin-right : auto;
+  padding: 0px;
+  margin: 0px;   
+}
+
+.center {
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+}
+
+.textarea{
+  resize: none;
+}
+
+row{
+  margin: 0px !important;
+}
+
+.modal-width-50vw {
+  max-width: 50vw !important;
+}
+
+.dropdown-menu.show {
+  width: 100% !important;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  min-width: 20rem !important;
+}
+.dropdown-menu {
+  right: inherit;
+}

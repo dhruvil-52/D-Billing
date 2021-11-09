@@ -1,0 +1,355 @@
+<!-- <button (click)="myFunction()">button</button> -->
+
+<div class="p-3 border">
+    <div id="print-me">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="row">
+                            <img src="assets/images/maa.jpg" class="db_img">
+                        </div>
+                        <div class="row">
+                            <div class="db_key_value">
+                                <span class="db_key"> GSTIN No. :</span>
+                                <span class="db_value"> {{myDetails.GSTNumber}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="row">
+                            <span class="db_main_header">{{myDetails.shopName}}</span>
+                        </div>
+                        <div class="row">
+                            <span class="db_header">
+                                {{myDetails.address}} {{myDetails.city}} {{myDetails.state}}
+                            </span>
+                        </div>
+                        <div class="row db_right mt-4">
+                            <div class="db_key_value">
+                                <span class="db_header"> Mo: </span>
+                                <span class="db_medium_font" *ngIf="myDetails.mobileNumber && myDetails.mobileNumber2">{{myDetails.mobileNumber}},{{myDetails.mobileNumber2}}</span>
+                                <span class="db_medium_font" *ngIf="myDetails.mobileNumber && !myDetails.mobileNumber2">{{myDetails.mobileNumber}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-9 db_center">
+                        <span class="db_header"> Tax Invoice </span>
+                    </div>
+                    <div class="col-3">
+                        <span class="db_header db_right"> {{billType}} </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-8" style="border-right: 1px solid black;">
+                        <div class="row">
+                            <span class="db_header"> Details Of Receiver (Bill To) </span>
+                        </div>
+                        <div class="row">
+                            <div class="form_field">
+                                <span class="db_key"> M/s. : </span>
+                                <mat-form-field [style.width.px]=250>
+                                    <input matInput [(ngModel)]="userDetails.firstName">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form_field">
+                                <span class="db_key">Add. :</span>
+                                <mat-form-field [style.width.px]=750>
+                                    <textarea matInput [(ngModel)]="userDetails.address" rows="1"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form_field">
+                                <span class="db_key"> GSTIN No. :</span>
+                                <mat-form-field [style.width.px]=250>
+                                    <input matInput [(ngModel)]="userDetails.GSTNumber">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="db_key_value">
+                                <span class="db_key"> Bill No. :</span>
+                                <span class="db_value"> {{billNumber}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="db_key_value">
+                                <span class="db_key"> Date :</span>
+                                <span class="db_value"> {{todayDate | date}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+
+        <div class="row" style="height: 700px;">
+            <!-- <ag-grid-angular #agGrid id="myGrid" style="width: 100%;height: 505px;" class="ag-theme-balham"
+                [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [rowData]="rowData"
+                (gridReady)="onGridReady($event)" [animateRows]='true' [floatingFilter]="true"
+                [enableCellTextSelection]="true" (rowClicked)="onRowClicked($event)">
+            </ag-grid-angular> -->
+        </div>
+        <hr>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6 pt-4" style="border-right: 1px solid black;">
+                        <span class="db_header"> RS. in words </span><br>
+                        <span class="db_medium_font">{{totalInWords}}</span>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="db_key_value">
+                                        <span class="db_key"> CGST </span>
+                                        <span class="db_value db_right"> {{cgst}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="db_key_value">
+                                        <span class="db_key"> SGST </span>
+                                        <span class="db_value db_right"> {{sgst}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="db_key_value">
+                                        <span class="db_key"> Round Off </span>
+                                        <span class="db_value db_right"> {{roundOff}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <span class="db_header"> Total Amount</span>
+                                    </div>
+                                    <div class="col-5" style="text-align: right;">
+                                        <h5>{{total}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="row" style="height: 150px;">
+                    <div class="col-6" style="border-right: 1px solid black;">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span class="db_header">Bank Details</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="form_field">
+                                        <span class="db_key"> Bank Name : </span>
+                                        <mat-form-field [style.width.px]=250>
+                                            <input matInput [(ngModel)]="myDetails.bankName">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="form_field">
+                                        <span class="db_key"> Bank A/c No. : </span>
+                                        <mat-form-field [style.width.px]=250>
+                                            <input matInput [(ngModel)]="myDetails.bankAccountNumber">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="form_field">
+                                            <span class="db_key"> IFSC Code : </span>
+                                            <mat-form-field [style.width.px]=250>
+                                                <input matInput [(ngModel)]="myDetails.IFSCCode">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="form_field">
+                                        <span class="db_key">Date : </span>
+                                        <mat-form-field [style.width.px]=250>
+                                            <input matInput [(ngModel)]="todayDate">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="form_field">
+                                        <span class="db_key">Chq.No. : </span>
+                                        <mat-form-field [style.width.px]=250>
+                                            <input matInput [(ngModel)]="chequeNumber">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="form_field">
+                                        <span class="db_key">Amt. : </span>
+                                        <mat-form-field [style.width.px]=250>
+                                            <input matInput [(ngModel)]="amount">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="form_field">
+                                        <span class="db_key">Bank : </span>
+                                        <mat-form-field [style.width.px]=250>
+                                            <input matInput [(ngModel)]="custBankName">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="form_field">
+                                        <span class="db_key">Bill No : </span>
+                                        <mat-form-field [style.width.px]=250>
+                                            <input matInput [(ngModel)]="billNumber">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="row">
+                            <span class="db_header">Terms & Condition</span>
+                        </div>
+                        <div class="row">
+                            <span class="db_value"> 1) ચેક રીટર્ન ચાર્જ 150.</span>
+                        </div>
+                        <div class="row">
+                            <span class="db_value"> 2) કલરની તપાસ કર્યા પછી મટેરીયલનો ઉપયોગ કરો પછી કોઈ કંપનીની ગેરેન્ટી
+                                આવશે નહીં.</span>
+                        </div>
+                        <div class="row">
+                            <span class="db_value"> 3) કલર વેરીયેસન અથવા ખરાબ પેરોડેક્ટ 24 કલાકની અંદર રિટર્ન અપવાની
+                                રહેશે.
+                            </span>
+                        </div>
+                        <div class="row">
+                            <span class="db_value"> 4) રવિવાર એ બંધ રહેશે.</span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row db_right">
+                            <span class="db_header">KHODIYAR DORI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-10" style="text-align: right;">
+                        <span class="db_key">( Reciever Signature )</span>
+                    </div>
+                    <div class="col-2 mr-2" style="text-align: right;">
+                        <span class="db_key">( Authorised Signature )</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row p-3">
+        <div class="col-12" style="text-align: right;">
+            <button class="btn btn-outline-primary db_btn" printSectionId="print-me" ngxPrint [useExistingCss]='true'
+                (click)="changeMode()">export as a pdf</button>
+        </div>
+    </div>
+</div>

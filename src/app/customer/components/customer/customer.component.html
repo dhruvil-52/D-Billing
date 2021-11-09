@@ -1,1 +1,81 @@
-<p>customer works!</p>
+<div class="db_body">
+    <div class="row db_title">
+        <span>Payment History</span>
+    </div>
+    <form [formGroup]="customerForm">
+        <div class="row">
+            <div class="col-2">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Date From</mat-label>
+                        <input type="text" bsDatepicker matInput formControlName="startDate" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Date To</mat-label>
+                        <input type="text" bsDatepicker matInput formControlName="endDate" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-8" style="text-align: right;">
+                <button class="btn db_btn" printSectionId="print-me" ngxPrint [useExistingCss]='true'
+                    (click)="print()">export as a
+                    pdf</button>
+                <button class="btn db_btn dbml-2" (click)="search()">Search</button>
+                <button class="btn db_btn dbml-2" (click)="reset()">Reset</button>
+                <button class="btn db_btn dbml-2" (click)="clear()">Clear</button>
+            </div>
+        </div>
+        <div id="print-me" style="border: 1px solid grey;">
+            <div class="row p-3" *ngIf="showMode">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="row">
+                                <img src="assets/images/maa.jpg" class="db_img">
+                            </div>
+                            <div class="row">
+                                <div class="db_key_value">
+                                    <span class="db_key"> GSTIN No. :</span>
+                                    <span class="db_value"> {{myDetails.GSTNumber}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="row">
+                                <span class="db_main_header">{{myDetails.shopName}}</span>
+                            </div>
+                            <div class="row">
+                                <span class="db_header">
+                                    {{myDetails.address}} {{myDetails.city}} {{myDetails.state}}
+                                </span>
+                            </div>
+                            <div class="row db_right mt-4">
+                                <div class="db_key_value">
+                                    <span class="db_header"> Mo: </span>
+                                    <span class="db_medium_font"
+                                        *ngIf="myDetails.mobileNumber && myDetails.mobileNumber2">{{myDetails.mobileNumber}},{{myDetails.mobileNumber2}}</span>
+                                    <span class="db_medium_font"
+                                        *ngIf="myDetails.mobileNumber && !myDetails.mobileNumber2">{{myDetails.mobileNumber}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="margin-left: 3px;">
+            
+            <div class="row mt-3 p-3">
+                <div class="col-12">
+                    <ag-grid-angular #agGrid id="myGrid" style="width: 48%;height: 450px;" class="ag-theme-balham"
+                        [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [rowData]="rowData"
+                        (gridReady)="onGridReady($event)" [animateRows]='true' [enableCellTextSelection]="true">
+                    </ag-grid-angular>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

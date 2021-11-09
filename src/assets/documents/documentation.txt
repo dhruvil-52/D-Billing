@@ -1,0 +1,42 @@
+body-parser=> 
+use 
+-form handling in express js
+
+-parse URL Encoded data (encoded url (mostly when send form data))
+app.use(bodyParser.urlencoded({extended :true})
+true means urlencoded bodyparser we will use
+
+-we can convert req data into specific format(json format mostly)
+app.use(bodyParser.json());
+
+
+npm install body-parser -->just make entry in package.json file ,don't make entry in dependecy
+npm install --save body-parser --> --save use for make entry in dependency also
+
+JSON.parse =>convert json data to obj format
+JSON.strigify =>convert obj format to json format
+
+let obj={
+	name:"dhruvil",
+	age:22
+}
+let duplicateObj = obj
+if we change in duplicateObj  or obj it make change in both obj
+
+let duplicateObj= JSON.parse(JSON.stringify(obj))
+-duplicateObj is copy of obj ,if we change in duplicateObj  or obj ,will not on effect other .
+
+==> CORS middlewares
+https://expressjs.com/en/resources/middleware/cors.html
+
+app.use = ((req, res, next) => {
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    next();
+});
+
+convict----?

@@ -1,1 +1,88 @@
-<p>add-edit-customer works!</p>
+<div class="modal-header">
+    <div>
+        <span class="db_dialog_title">
+            {{userName ? userName : "Add Customer"}}
+        </span>
+        <span class="cus-hov d-inline-flex" *ngIf="isEditMode">
+            <i class="fa fa-history" title="Show Transactions" (click)="showTransaction()"></i>
+        </span>
+    </div>
+    <div class="float-right">
+        <span (click)="close()" class="cursor-pointer cus-hov d-inline-flex">
+            <i class="fa fa-times"></i>
+        </span>
+    </div>
+</div>
+<div class="modal-body">
+    <form [formGroup]="customerForm">
+        <div class="row">
+            <div class="col-4">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Last Name </mat-label>
+                        <input matInput formControlName="lastName">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Mobile Number</mat-label>
+                        <input matInput formControlName="mobileNumber">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Due Amount</mat-label>
+                        <input matInput formControlName="dueAmount">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Email </mat-label>
+                        <input matInput formControlName="email">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>GST Number </mat-label>
+                        <input matInput formControlName="GSTNumber">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=400>
+                        <mat-label>Address</mat-label>
+                        <textarea matInput formControlName="address" rows="3"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="btn db_dialog_btn" (click)="save()">Save</button>
+    <button class="btn db_dialog_btn dbml-2" (click)="deleteCustomer()" *ngIf="isEditMode">Delete Customer</button>
+    <button class="btn db_dialog_btn dbml-2" (click)="clear()">Clear</button>
+    <button class="btn db_dialog_btn dbml-2" (click)="close()">Cancel</button>
+</div>

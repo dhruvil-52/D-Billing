@@ -1,0 +1,37 @@
+@import "~ag-grid-community/src/styles/ag-grid.scss";
+@import "~ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham-mixin";
+
+.ag-theme-balham {
+    @include ag-theme-balham((
+        // use theme parameters where possible
+        balham-active-color: deeppink
+    ));
+
+    .ag-header {
+        // or write CSS selectors to make customisations beyond what the parameters support
+        text-style: italic;
+    }
+}
+
+
+.ag-theme-balham {
+    /* use theme parameters where possible */
+    --ag-foreground-color: deeppink;
+}
+
+/* or write CSS selectors to make customisations beyond what the parameters support */
+.ag-theme-balham .ag-header {
+    text-style: italic;
+}
+
+
+.ag-theme-balham {
+    @include ag-theme-balham((
+        foreground-color: var(--appMainTextColor)
+    ));
+}
+
+.ag-theme-balham .ag-header-cell-label {
+    font-style: italic;
+}
+
