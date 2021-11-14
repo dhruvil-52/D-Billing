@@ -1,1 +1,42 @@
-<p>remaining-item works!</p>
+<div class="db_body">
+    <div class="row db_title">
+        <span>Item List</span>
+    </div>
+    <form [formGroup]="itemForm">
+        <div class="row">
+            <div class="col-2">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Item Name</mat-label>
+                        <input matInput formControlName="itemName">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Item Code</mat-label>
+                        <input matInput formControlName="itemCode">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-8 " style="text-align: right;">
+                <button class="btn db_btn dbml-2" (click)="getItem()">Search</button>
+                <button class="btn db_btn dbml-2" (click)="clear()">Clear</button>
+            </div>
+        </div>
+        <div class="no-found p-3" *ngIf="rowData && rowData.length == 0">
+            <p class="mb-0">No Item Available</p>
+        </div>
+        <div class="row">
+            <div class="col-12" *ngIf="rowData && rowData.length>0">
+                <p class="font-weight-bold mb-2 db_fs">Items ({{rowData.length}})</p>
+                <ag-grid-angular #agGrid id="myGrid" style="width: 45%;height: 460px;" class="ag-theme-balham"
+                    [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [rowData]="rowData"
+                    (gridReady)="onGridReady($event)" [animateRows]='true' [floatingFilter]="true"
+                    [enableCellTextSelection]="true">
+                </ag-grid-angular>
+            </div>
+        </div>
+    </form>
+</div>

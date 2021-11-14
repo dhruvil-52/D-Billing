@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 
 const appRoute: Routes = [
@@ -9,6 +10,7 @@ const appRoute: Routes = [
   { path: 'purchase', loadChildren: () => import('./purchase/purchase.module').then(m => m.PurchaseModule) },
   { path: 'sell', loadChildren: () => import('./sell/sell.module').then(m => m.SellModule) },
   { path: 'my-profile', component: MyProfileComponent },
+  { path: 'about-us', component: AboutUsComponent },
   { path: '**', redirectTo: '/sell', pathMatch: 'full' }
 ]
 

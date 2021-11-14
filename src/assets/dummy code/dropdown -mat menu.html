@@ -1,0 +1,23 @@
+<mat-toolbar fxLayout="row">
+    <!-- <span (click)="goToHome()"><i class="fa fa-home db_color" title="Home"></i></span> -->
+    <button mat-button *ngFor="let item of menuItems" fxHide.xs>
+      <mat-icon class="mr">{{item.icon}}</mat-icon>
+      {{item.label}}
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #dropMenu="matMenu">
+      <ng-container *ngFor="let item of menuItems">
+        <!-- <button mat-menu-item>
+          <mat-icon class="mr">home</mat-icon>
+          {{item.label}}
+        </button> -->
+        <button mat-icon-button>
+          <mat-icon>{{item.label}}</mat-icon>
+        </button>
+        <button mat-button routerLink="/">{{item.label}}</button>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </mat-menu>
+  </mat-toolbar>

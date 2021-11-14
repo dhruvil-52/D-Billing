@@ -1,9 +1,17 @@
 <div class="db_body">
     <div class="row db_title">
-        <span>Payment History</span>
+        <span>Payment</span>
     </div>
     <form [formGroup]="customerForm">
         <div class="row">
+            <div class="col-2">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name">
+                    </mat-form-field>
+                </div>
+            </div>
             <div class="col-2">
                 <div class="form_field">
                     <mat-form-field [style.width.px]=150>
@@ -20,7 +28,7 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="col-8" style="text-align: right;">
+            <div class="col-6" style="text-align: right;">
                 <button class="btn db_btn" printSectionId="print-me" ngxPrint [useExistingCss]='true'
                     (click)="print()">export as a
                     pdf</button>

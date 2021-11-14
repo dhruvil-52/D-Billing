@@ -1,35 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../../customer.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import * as moment from 'moment-timezone';
 import { ColDef } from 'ag-grid-community';
-import { NgxPrintModule } from 'ngx-print';
+import { CustomerService } from '../../../customer/customer.service';
+import * as moment from 'moment-timezone';
 
 
 @Component({
-  selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  selector: 'app-payment',
+  templateUrl: './payment.component.html',
+  styleUrls: ['./payment.component.scss']
 })
-export class CustomerComponent implements OnInit {
+export class PaymentComponent implements OnInit {
   public customerForm: FormGroup;
-  public route: ActivatedRoute;
-  public userDetail: any;
-  public customerId: string;
-  public paymentHistory: Array<any> = [];
-  public model: any
   public columnDefs: ColDef[];
   public defaultColDef: any;
   public rowData = [];
   public gridOptions: any;
   public gridApi: any;
   public gridColumnApi: any;
-  public gridLength: number;
-  public showMode: boolean = false;
   public myDetails: any;
+  public userDetail: any;
+  public showMode: boolean = false;
+  public customerId: any;
 
-  constructor(private customerService: CustomerService, private fb: FormBuilder) {
+
+  constructor(private fb: FormBuilder, private customerService: CustomerService) {
     this.columnDefs = [
       {
         headerName: 'Bill No',
@@ -112,19 +107,12 @@ export class CustomerComponent implements OnInit {
     };
   }
 
-  onGridReady(params): void {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    params.api.sizeColumnsToFit();
-  }
-
-  print() {
-    this.getMyProfile();
-    this.showMode = true;
-    setTimeout(() => {
-      console.log("print");
-      window.print()
-    }, 2000)
+  initCustomerForm() {
+    this.customerForm = this.fb.group({
+      name: '',
+      startDate: '',
+      endDate: ''
+    })
   }
 
   dateFilterParam(filterLocalDateAtMidnight, cellValue) {
@@ -147,18 +135,9 @@ export class CustomerComponent implements OnInit {
     }
   };
 
-  initCustomerForm() {
-    this.customerForm = this.fb.group({
-      customerId: '',
-      startDate: '',
-      endDate: ''
-    })
-  }
-
   setDefaultValue() {
-    this.customerForm.get('customerId').patchValue(this.customerId);
-    // this.customerForm.get('startDate').patchValue(moment().startOf('month'));
-    // this.customerForm.get('endDate').patchValue(moment().endOf('month'));
+    this.customerForm.get('startDate').patchValue(moment().startOf('month'));
+    this.customerForm.get('endDate').patchValue(moment().endOf('month'));
   }
 
   reset() {
@@ -168,6 +147,21 @@ export class CustomerComponent implements OnInit {
 
   clear() {
     this.initCustomerForm();
+  }
+
+  print() {
+    this.getMyProfile();
+    this.showMode = true;
+    setTimeout(() => {
+      console.log("print");
+      window.print()
+    }, 2000)
+  }
+
+  onGridReady(params): void {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+    params.api.sizeColumnsToFit();
   }
 
   getCustomerData() {
@@ -185,7 +179,7 @@ export class CustomerComponent implements OnInit {
       console.log(error);
     })
   }
-  
+
   getMyProfile() {
     this.customerService.getMyProfile().then((result) => {
       this.myDetails = result[0];
@@ -205,11 +199,14 @@ export class CustomerComponent implements OnInit {
     //   }
     // );
 
+    this.initCustomerForm();
     this.customerId = "dhruviltalaviya@1"
     console.log("-->", this.customerId)
-    this.initCustomerForm();
-    this.setDefaultValue();
-    this.getCustomerData();
+    // when component open from customer screen
+    if (this.customerId) {
+      this.customerForm.get('startDate').patchValue(moment().startOf('month'));
+      this.getCustomerData();
+    }
   }
 
 }

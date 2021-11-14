@@ -12,6 +12,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxPrintModule } from 'ngx-print';
 import { PurchaseRoutingModule } from './purchase-routing.module';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { PurchaseRoutingModule } from './purchase-routing.module';
     MatDatepickerModule,
     BsDatepickerModule.forRoot(),
     NgxPrintModule,
-    PurchaseRoutingModule
+    PurchaseRoutingModule,
+    MatIconModule
   ],
   entryComponents: [AddItemComponent]
 })

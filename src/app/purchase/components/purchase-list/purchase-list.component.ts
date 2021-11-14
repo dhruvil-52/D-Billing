@@ -224,6 +224,7 @@ export class PurchaseListComponent implements OnInit {
         headerTooltip: 'Rate',
         tooltipField: "rate",
         filter: "agMultiColumnFilter",
+        type: 'rightAligned',
         filterParams: {
           filters: [
             {
@@ -244,6 +245,7 @@ export class PurchaseListComponent implements OnInit {
         width: 93,
         headerTooltip: 'Amount',
         tooltipField: "amount",
+        type: 'rightAligned',
         filter: "agMultiColumnFilter",
         filterParams: {
           filters: [
@@ -334,26 +336,6 @@ export class PurchaseListComponent implements OnInit {
       return 1;
     }
   };
-
-  openCustomer(customer) {
-    // console.log("data", customer)
-    // if (customer) {
-    //   this.router.navigate(['customer', customer.customerId])
-    // } else {
-    //   this.router.navigate(['customer'])
-    // }
-    this.dialogService.dialog(AddItemComponent, { customer }, { 'keyboard': false, 'backdrop': true, 'size': 'width-50vw', 'windowClass': '' }).result.then((response) => {
-      if (response) {
-        console.log(response);
-        this.getItem();
-        this.messageService.showMessage("Customer added successfully", "success")
-      } else {
-        this.messageService.showMessage("Error while adding customer", "error")
-      }
-    }, (error) => {
-      this.messageService.showMessage("Error while adding customer", "error")
-    })
-  }
 
   clear() {
     this.itemForm.reset();

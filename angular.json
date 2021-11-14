@@ -44,7 +44,8 @@
               "node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js"
             ]
           },
           "configurations": {
@@ -119,7 +120,8 @@
               "node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js"
             ]
           }
         },

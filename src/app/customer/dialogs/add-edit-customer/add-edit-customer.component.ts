@@ -93,7 +93,7 @@ export class AddEditCustomerComponent implements OnInit {
   }
 
   showTransaction() {
-    this.router.navigate(['customer/', this.customerForm.controls.customerId.value])
+    this.router.navigate(['payment', this.customerForm.controls.customerId.value])
     this.modal.close();
   }
 
