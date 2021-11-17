@@ -9,10 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxPrintModule } from 'ngx-print';
+import { BillHistoryComponent } from './components/bill-history/bill-history.component';
 
 
 @NgModule({
-  declarations: [PaymentComponent],
+  declarations: [PaymentComponent, BillHistoryComponent],
   imports: [
     CommonModule,
     PaymentRoutingModule,

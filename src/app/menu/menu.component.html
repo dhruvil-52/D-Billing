@@ -1,19 +1,18 @@
-<div>
-  <mat-toolbar fxLayout="row" style="background-color: #1976d2;color: white;height: 30px;">
-    <button mat-button style="margin-left: -25px;" (click)="routing('')">
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-button [matMenuTriggerFor]="dropMenu" style="margin-left: 1160px;">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <mat-menu #dropMenu="matMenu">
-      <ng-container *ngFor="let item of menuItems">
-        <button mat-menu-item (click)="routing(item.url)">
-          <mat-icon class="mr">{{item.icon}}</mat-icon>
-          {{item.label}}
-        </button>
-        <mat-divider></mat-divider>
-      </ng-container>
-    </mat-menu>
-  </mat-toolbar>
-</div>
+<mat-toolbar style="background-color: #1976d2;color: white;height: 30px;">
+  <button mat-button style="margin-left: -25px;" (click)="routing('')">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span class="example-spacer"></span>
+  <button mat-button [matMenuTriggerFor]="dropMenu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #dropMenu="matMenu">
+    <ng-container *ngFor="let item of menuItems">
+      <button mat-menu-item (click)="routing(item.url)">
+        <mat-icon class="mr">{{item.icon}}</mat-icon>
+        {{item.label}}
+      </button>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-menu>
+</mat-toolbar>

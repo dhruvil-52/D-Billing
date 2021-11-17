@@ -28,13 +28,18 @@ export class MenuComponent implements OnInit {
     },
     {
       label: 'Customer',
-      icon: 'person_outline',
+      icon: 'supervised_user_circle',
       url: '/customer'
     },
     {
       label: 'Payment',
       icon: 'attach_money',
       url: '/payment'
+    },
+    {
+      label: 'Bill History',
+      icon: 'library_books',
+      url: '/payment/bill/history'
     },
     {
       label: '',

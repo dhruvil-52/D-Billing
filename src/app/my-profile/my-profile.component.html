@@ -3,8 +3,8 @@
         <span>My Profile</span>
     </div>
 
-    <form [formGroup]="myDetailsForm">
-        <div class="row p-5 m-5">
+    <form [formGroup]="myDetailsForm" novalidate>
+        <div class="row p-5 m-2">
             <div class="col-12">
                 <div class="row">
                     <div class="col-2">
@@ -84,7 +84,7 @@
                                 <div class="row">
                                     <div class="form_field">
                                         <span class="db_key">Address : </span>
-                                        <mat-form-field [style.width.px]=250>
+                                        <mat-form-field [style.width.px]=375>
                                             <input matInput formControlName="address">
                                         </mat-form-field>
                                     </div>
@@ -174,16 +174,60 @@
                         <div class="row mt-4">
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-10">
                                         <span class="db_header">Add Terms & Conditions</span>
+                                    </div>
+                                    <div class="col-2">
+                                        <span (click)="addTerms()" style="cursor: pointer;">
+                                            <mat-icon title="Add Terms And Conditions">add</mat-icon>
+                                        </span>
+                                        <span (click)="clearWholeTerms()" style="cursor: pointer;">
+                                            <mat-icon title="Delete Whole Terms And Conditions">delete
+                                            </mat-icon>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <hr>
-                    </div>
-                </div>
+                        <!-- <div class="row" *ngFor="let obj of termsArr; let i= index">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="form_field">
+                                        <mat-form-field [style.width.px]=450>
+                                            <input matInput (click)="storeTerms(i,$event)">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div formArrayName="termsAndConditions">
+                            <div *ngFor="let control of terms.controls; index as i">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <div class="form_field">
+                                                    <mat-form-field [style.width.px]=400>
+                                                        <input matInput
+                                                            [formControl]="terms.controls[i]" />
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <span (click)="removeTerms(i)" style="cursor: pointer;margin-top: 3px;">
+                                                    <mat-icon title="Delete Terms And Conditions">delete</mat-icon>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </form>
@@ -191,7 +235,7 @@
         <div class="col-12" style="text-align: right;">
             <button class="btn btn-outline-primary db_btn" (click)="reset()">Reset</button>
             <button class="btn btn-outline-primary db_btn dbml-2" (click)="saveMyDetails()">{{
-                mode == "edit" ? 'Edit' : 'Add'}}</button>
+                mode == "edit" ? 'Save' : 'Add'}}</button>
         </div>
     </div>
 </div>

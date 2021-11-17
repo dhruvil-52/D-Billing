@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
 import { SellService } from '../sell/sell.service';
 import { MessageService } from '../services/message.service';
 
@@ -11,25 +11,48 @@ import { MessageService } from '../services/message.service';
 export class MyProfileComponent implements OnInit {
 
   public myDetailsForm: FormGroup;
+  // public termsAndConditions = new FormArray([])
   public mode: string;
   public myDetails: any;
-  constructor(private sellService: SellService, private messageService: MessageService) { }
+  // get terms() { return this.myDetailsForm.get('termsAndConditions'); }
+  get terms(): FormArray {
+    return this.myDetailsForm.get("termsAndConditions") as FormArray
+  }
+  xyz = [1, 2, 3, 4, 5]
+  constructor(private sellService: SellService, private messageService: MessageService, private fb: FormBuilder) { }
 
+  // initMyForm() {
+  //   this.myDetailsForm = new FormGroup({
+  //     shopName: new FormControl(""),
+  //     address: new FormControl(""),
+  //     city: new FormControl(""),
+  //     state: new FormControl(""),
+  //     GSTNumber: new FormControl(""),
+  //     mobileNumber: new FormControl(""),
+  //     mobileNumber2: new FormControl(""),
+  //     bankName: new FormControl(""),
+  //     bankAccountNumber: new FormControl(""),
+  //     IFSCCode: new FormControl(""),
+  //     name: new FormControl(""),
+  //     email: new FormControl(""),
+  //     termsAndConditions: new FormControl(""),
+  //   })
+  // }
   initMyForm() {
-    this.myDetailsForm = new FormGroup({
-      shopName: new FormControl(""),
-      address: new FormControl(""),
-      city: new FormControl(""),
-      state: new FormControl(""),
-      GSTNumber: new FormControl(""),
-      mobileNumber: new FormControl(""),
-      mobileNumber2: new FormControl(""),
-      bankName: new FormControl(""),
-      bankAccountNumber: new FormControl(""),
-      IFSCCode: new FormControl(""),
-      name: new FormControl(""),
-      email: new FormControl(""),
-      termsAndConditions: new FormControl([])
+    this.myDetailsForm = this.fb.group({
+      shopName: "",
+      address: "",
+      city: "",
+      state: "",
+      GSTNumber: "",
+      mobileNumber: "",
+      mobileNumber2: "",
+      bankName: "",
+      bankAccountNumber: "",
+      IFSCCode: "",
+      name: "",
+      email: "",
+      termsAndConditions: this.fb.array([]),
     })
   }
 
@@ -58,6 +81,22 @@ export class MyProfileComponent implements OnInit {
     this.setDefaultValue();
   }
 
+  addTerms() {
+    // this.terms.push(this.fb.control(''));
+    // (this.myDetailsForm.controls['termsAndConditions'] as FormArray).push(this.fb.control(''));
+    this.terms.push(this.fb.control(''));
+  }
+
+  removeTerms(index: number) {
+    // (this.myDetailsForm.controls['termsAndConditions'] as FormArray).removeAt(index);
+    this.terms.removeAt(index);
+  }
+
+  clearWholeTerms() {
+    // (this.myDetailsForm.controls['termsAndConditions'] as FormArray).clear();
+    this.terms.clear();
+  }
+
   saveMyDetails() {
     let obj = this.myDetailsForm.value;
     this.sellService.editMyProfile(obj).then((result) => {
@@ -83,6 +122,9 @@ export class MyProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getMyProfile();
     this.initMyForm();
+    for (let i = 0; i < 5; i++) {
+      this.addTerms();
+    }
     this.setDefaultValue();
   }
 
