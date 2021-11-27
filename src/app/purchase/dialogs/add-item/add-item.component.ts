@@ -4,6 +4,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService } from 'src/app/services/message.service';
 import { Router } from '@angular/router';
 import { PurchaseService } from '../../purchase.service';
+import { DialogService } from 'src/app/services/dialog.service';
+import { ConeWeightComponent } from '../cone-weight/cone-weight.component';
 
 @Component({
   selector: 'app-add-item',
@@ -17,7 +19,8 @@ export class AddItemComponent implements OnInit {
   public itemName: string;
   public isEditMode: boolean;
 
-  constructor(private purchaseService: PurchaseService,
+  constructor(private dialogService: DialogService,
+    private purchaseService: PurchaseService,
     private modal: NgbActiveModal,
     private messageService: MessageService,
     private router: Router) {
@@ -69,6 +72,15 @@ export class AddItemComponent implements OnInit {
     // }
   }
 
+  openConeWeightDialog() {
+    this.dialogService.dialog(ConeWeightComponent, {}, { 'keyboard': false, 'backdrop': true, 'size': 'width-20vw', 'windowClass': '' }).result.then((response) => {
+      if (response) {
+        this.customerForm.get('coneWeight').setValue(response);
+      }
+    }, (error) => {
+      this.messageService.showMessage("Error while set cone weight", "error")
+    })
+  }
 
   clear() {
     // this.data = {};

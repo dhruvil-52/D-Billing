@@ -14,7 +14,7 @@
 <div class="modal-body">
     <form [formGroup]="customerForm">
         <div class="row">
-            <div class="col-4">
+            <div class="col-6">
                 <div class="form_field">
                     <mat-form-field [style.width.px]=150>
                         <mat-label>Bill Number</mat-label>
@@ -22,7 +22,17 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>No of Pcs.</mat-label>
+                        <input matInput formControlName="noOfPcs">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
                 <div class="form_field">
                     <mat-form-field [style.width.px]=150>
                         <mat-label>Buy From</mat-label>
@@ -30,7 +40,17 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Cone Weight</mat-label>
+                        <input matInput formControlName="coneWeight" (click)="openConeWeightDialog()">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
                 <div class="form_field">
                     <mat-form-field [style.width.px]=150>
                         <mat-label>Date </mat-label>
@@ -38,9 +58,17 @@
                     </mat-form-field>
                 </div>
             </div>
+            <div class="col-6">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Net Weight</mat-label>
+                        <input matInput formControlName="netWeight">
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
         <div class="row">
-            <div class="col-4">
+            <div class="col-6">
                 <div class="form_field">
                     <mat-form-field [style.width.px]=150>
                         <mat-label>Item Name </mat-label>
@@ -48,7 +76,17 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
+                <div class="form_field">
+                    <mat-form-field [style.width.px]=150>
+                        <mat-label>Rate</mat-label>
+                        <input matInput formControlName="rate">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
                 <div class="form_field">
                     <mat-form-field [style.width.px]=150>
                         <mat-label>Item Code</mat-label>
@@ -56,11 +94,11 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
                 <div class="form_field">
                     <mat-form-field [style.width.px]=150>
-                        <mat-label>Rate</mat-label>
-                        <input matInput formControlName="rate">
+                        <mat-label>Amount</mat-label>
+                        <input matInput formControlName="amount">
                     </mat-form-field>
                 </div>
             </div>

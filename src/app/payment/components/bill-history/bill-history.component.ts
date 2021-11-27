@@ -46,7 +46,7 @@ export class BillHistoryComponent implements OnInit {
       {
         headerName: 'customer Name',
         field: 'customerName',
-        width: 150,
+        width: 200,
         headerTooltip: 'customer Name',
         tooltipField: "customerName",
         filter: "agMultiColumnFilter",
@@ -67,7 +67,7 @@ export class BillHistoryComponent implements OnInit {
       {
         headerName: 'Bill No',
         field: 'billNumber',
-        width: 150,
+        width: 100,
         headerTooltip: 'Bill No',
         tooltipField: "billNumber",
         filter: "agMultiColumnFilter",
@@ -114,7 +114,6 @@ export class BillHistoryComponent implements OnInit {
         headerTooltip: 'payment mode',
         tooltipField: "paymentMode",
         filter: "agMultiColumnFilter",
-        type: 'rightAligned',
         filterParams: {
           filters: [
             {
@@ -132,6 +131,7 @@ export class BillHistoryComponent implements OnInit {
       {
         headerName: 'Show Bill',
         field: '',
+        cellClass: "grid-cell-centered",
         width: 140,
         cellRenderer: (params) => {
           return `<i class="fa fa-external-link" action="openBill"></i>`;
@@ -140,7 +140,7 @@ export class BillHistoryComponent implements OnInit {
     ]
   }
 
-  
+
   onGridReady(params): void {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
@@ -152,14 +152,14 @@ export class BillHistoryComponent implements OnInit {
       let action = data.event.target.getAttribute("action")
       switch (action) {
         case "openBill":
-          this.openBill(data.data)
+          this.openBill(data.data.billNumber)
       }
     }
   }
 
-  openBill(data){
-    console.log(data);
-    this.router.navigate(['sell'])
+  openBill(billNo) {
+    console.log(billNo)
+    this.router.navigate(['sell',billNo])
   }
 
   initCustomerForm() {

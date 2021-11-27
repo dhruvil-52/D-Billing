@@ -304,7 +304,7 @@ export class PurchaseListComponent implements OnInit {
     //   this.name = result;
     // });
 
-    this.dialogService.dialog(AddItemComponent, {}, { 'keyboard': false, 'backdrop': true, 'size': 'width-50vw', 'windowClass': '' }).result.then((response) => {
+    this.dialogService.dialog(AddItemComponent, {}, { 'keyboard': false, 'backdrop': true, 'size': 'width-40vw', 'windowClass': '' }).result.then((response) => {
       if (response) {
         console.log(response);
         this.messageService.showMessage("Item added successfully", "success");

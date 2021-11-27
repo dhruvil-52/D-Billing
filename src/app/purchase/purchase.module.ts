@@ -13,11 +13,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxPrintModule } from 'ngx-print';
 import { PurchaseRoutingModule } from './purchase-routing.module';
 import { MatIconModule } from '@angular/material/icon';
+import { ConeWeightComponent } from './dialogs/cone-weight/cone-weight.component';
 
 
 
 @NgModule({
-  declarations: [PurchaseListComponent, AddItemComponent, RemainingItemComponent],
+  declarations: [PurchaseListComponent, AddItemComponent, RemainingItemComponent, ConeWeightComponent],
   imports: [
     CommonModule,
     CommonModule,
@@ -33,6 +34,6 @@ import { MatIconModule } from '@angular/material/icon';
     PurchaseRoutingModule,
     MatIconModule
   ],
-  entryComponents: [AddItemComponent]
+  entryComponents: [AddItemComponent,ConeWeightComponent]
 })
 export class PurchaseModule { }

@@ -73,6 +73,9 @@ export class MyProfileComponent implements OnInit {
   setDefaultValue() {
     if (this.mode == "edit") {
       this.myDetailsForm.setValue(this.myDetails);
+      this.myDetailsForm.get('correctAnswers') as FormArray; 
+      this.myDetailsForm.controls.termsAndConditions.setValue(this.myDetails.termsAndConditions);
+
     }
   }
 
@@ -120,8 +123,8 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getMyProfile();
     this.initMyForm();
+    this.getMyProfile();
     for (let i = 0; i < 5; i++) {
       this.addTerms();
     }
